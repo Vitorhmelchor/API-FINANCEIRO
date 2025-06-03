@@ -42,7 +42,7 @@ Olá! Esta é uma API completa para gerenciamento de finanças pessoais, com aut
    cd finance-api
 
  2. **Instale as dependências**:
-   ```bash
+   ``bash
    npm install
      # ou
    yarn install
@@ -77,3 +77,4 @@ Olá! Esta é uma API completa para gerenciamento de finanças pessoais, com aut
    Abra um Pull Request
 
 Desenvolvido com ❤️ por Vitor Hugo 
+
