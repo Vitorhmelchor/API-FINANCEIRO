@@ -20,7 +20,7 @@ const validateUserData = (nome, email, senha) => {
   }
 };
 
-// novo usuário
+
 router.post('/register', async (req, res) => {
   try {
     const { nome, email, senha } = req.body;
@@ -88,10 +88,10 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Middleware de verificação de token
+
 function verifyToken(req, res, next) {
   const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
+  const token = authHeader && authHeader.split(' ')[1];
 
   if (!token) {
     return res
