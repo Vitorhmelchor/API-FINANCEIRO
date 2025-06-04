@@ -26,11 +26,9 @@ app.use(
 app.use(bodyParser.json({ limit: '10kb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Configuração do Swagger
 const swaggerDocument = YAML.load(path.join(__dirname, 'swagger.yaml'));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// Importar rotas
 const { router: authRouter } = require('./routes/auth');
 const categoriasRouter = require('./routes/categorias');
 const gastosRouter = require('./routes/gastos');
@@ -38,7 +36,6 @@ const receitasRouter = require('./routes/receitas');
 const metasRouter = require('./routes/metas');
 const relatoriosRouter = require('./routes/relatorios');
 
-// Configurar rotas
 app.use('/api/auth', authRouter);
 app.use('/api/categorias', categoriasRouter);
 app.use('/api/gastos', gastosRouter);
@@ -46,7 +43,6 @@ app.use('/api/receitas', receitasRouter);
 app.use('/api/metas', metasRouter);
 app.use('/api/relatorios', relatoriosRouter);
 
-// Rota de saúde
 app.get('/health', (req, res) => {
   res.status(200).json({
     status: 'OK',
@@ -54,7 +50,6 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Rota inicial
 app.get('/', (req, res) => {
   res.json({
     message: 'API de Controle Financeiro Pessoal',
@@ -70,7 +65,6 @@ app.get('/', (req, res) => {
   });
 });
 
-// Middleware de erro global
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({
@@ -79,7 +73,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Iniciar servidor
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
   console.log(`Documentação disponível em http://localhost:${port}/api-docs`);
