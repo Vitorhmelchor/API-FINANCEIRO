@@ -12,7 +12,6 @@ const pool = mysql.createPool({
   timezone: 'UTC', 
 });
 
-// Testar conexão ao iniciar
 async function testConnection() {
   let conn;
   try {
